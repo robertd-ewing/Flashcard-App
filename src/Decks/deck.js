@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 
@@ -14,7 +14,7 @@ function Deck({deck}) {
     
         <Link to={`/decks/${deck.id}`} className="btn btn-secondary">View</Link>
         <Link to={`/decks/${deck.id}/study`} className="btn btn-primary">Study</Link>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" className="btn btn-danger">Delete</button>
         </div>
     </>
   );
