@@ -15,12 +15,19 @@ function Study() {
 
     loadDeck();
   }, [deckId]);
-
+ if(!deck) {
+  return <div>Loading...</div>
+ }
   return (
     <div>
-      <h2>Study: {deck && deck.name}</h2>
-      {deck && <Deck deck={deck} />}
-      <button type="button" className="btn btn-secondary">Flip</button>
+      <h2>Study:  {deck.name}</h2>
+      {deck.cards.map((card) => (
+        <>
+          <p>Card {card.id} of {deck.cards.length}</p>
+          <p>{card.front}</p>
+          <button type="button" className="btn btn-secondary">Flip</button>
+        </>
+      ))}
     </div>
   );
 }
