@@ -1,4 +1,4 @@
-import React from "react";
+
 import Header from "./Header";
 import NotFound from "./NotFound";
 import { Routes, Route } from "react-router-dom";
@@ -19,11 +19,6 @@ function Layout() {
           <Route path ="decks/:deckId/study" element={<Study />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
-        
-        
-        
-      
-    <NotFound />
     </div>
     </>
   );

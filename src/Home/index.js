@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { listDecks } from "../utils/api";
 import Decks from "../decks";
 
