@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from 'react-router-dom'
 import { readDeck } from "../utils/api";
 
 function Study() {
   const { deckId } = useParams();
+  const navigate = useNavigate();
   const [deck, setDeck] = useState(null);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
@@ -32,7 +33,11 @@ function Study() {
     if (currentCardIndex < deck.cards.length - 1) {
       setCurrentCardIndex(currentCardIndex + 1);
     } else {
-      setCurrentCardIndex(0);
+      if (window.confirm("You have reached the end of the deck. Do you want to restart?")) {
+        setCurrentCardIndex(0);
+      } else {
+        navigate('/');
+      }
     }
   };
 
