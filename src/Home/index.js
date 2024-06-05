@@ -18,6 +18,7 @@ function Home() {
     <div>
       <h2>Decks</h2>
       <Decks decks={decks} />
+      
     </div>
   );
 }

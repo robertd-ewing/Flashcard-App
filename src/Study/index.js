@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'
-import { readDeck } from "../utils/api";
+import { useParams, useNavigate } from 'react-router-dom';
+import { readDeck } from '../utils/api';
 
 function Study() {
   const { deckId } = useParams();
@@ -20,6 +20,24 @@ function Study() {
 
   if (!deck) {
     return <div>Loading...</div>;
+  }
+
+  if (deck.cards.length < 3) {
+    return (
+      <div>
+        <h2>Study: {deck.name}</h2>
+        <div>
+          <p>This deck does not have enough cards to study. Please add more cards to the deck.</p>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={() => navigate(`/decks/${deckId}`)}
+          >
+            Go to Deck
+          </button>
+        </div>
+      </div>
+    );
   }
 
   const currentCard = deck.cards[currentCardIndex];
@@ -61,6 +79,7 @@ function Study() {
 }
 
 export default Study;
+
 
 
 

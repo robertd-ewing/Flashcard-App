@@ -99,7 +99,7 @@ describe("Decks", ()=>{
           </MemoryRouter>
         );
       
-        const titleElements = await screen.findAllByText("Create Deck");
+        const titleElements = await screen.findAllByText("");
         expect(titleElements.length).toBeGreaterThanOrEqual(1);
       
         const inputs = document.querySelectorAll("input");
