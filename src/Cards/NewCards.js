@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { readDeck, createCard } from '../utils/api';
 
 function NewCards() {
   const { deckId } = useParams();
+  const navigate = useNavigate();
   const [deck, setDeck] = useState(null);
   const [front, setFront] = useState('');
   const [back, setBack] = useState('');
@@ -61,6 +62,7 @@ function NewCards() {
             required
           />
         </div>
+        <button type="button" className="btn btn-secondary" onClick={() => navigate('/')}>Done</button>
         <button type="submit" className="btn btn-primary">Save</button>
       </form>
     </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { readDeck, createCard } from '../utils/api';
 
 function Study() {
@@ -50,14 +50,7 @@ function Study() {
       <div>
         <h2>Study: {deck.name}</h2>
         <div>
-          <p>This deck does not have enough cards to study. Please add more cards to the deck.</p>
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => setShowAddCardForm(true)}
-          >
-            Add Cards
-          </button>
+        <Link to={`/decks/${deckId}/cards/new`} className="btn btn-primary">Add Card</Link>
         </div>
       </div>
     );

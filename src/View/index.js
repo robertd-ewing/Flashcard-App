@@ -53,41 +53,10 @@ function View() {
                     <p>Total Cards: {deck.cards.length}</p>
                     <button type="button" className="btn btn-secondary">Edit</button>
                     <Link to={`/decks/${deckId}/study`} className="btn btn-primary">Study</Link>
-                    <button type="button" className="btn btn-primary" onClick={() => setShowAddCardForm(true)}>Add Cards</button>
+                    <Link to={`/decks/${deckId}/cards/new`} className="btn btn-primary">Add Card</Link>
                     <button type="button" className="btn btn-danger" onClick={handleDelete}>Delete</button>
                 </div>
-                {showAddCardForm && (
-                    <div>
-                        <h2>Add Card to {deck.name}</h2>
-                        <form onSubmit={handleSubmit}>
-                            <div className="form-group">
-                                <label htmlFor="front">Front</label>
-                                <input
-                                    type="text"
-                                    id="front"
-                                    name="front"
-                                    className="form-control"
-                                    value={front}
-                                    onChange={(e) => setFront(e.target.value)}
-                                    required
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="back">Back</label>
-                                <input
-                                    type="text"
-                                    id="back"
-                                    name="back"
-                                    className="form-control"
-                                    value={back}
-                                    onChange={(e) => setBack(e.target.value)}
-                                    required
-                                />
-                            </div>
-                            <button type="submit" className="btn btn-primary">Save</button>
-                        </form>
-                    </div>
-                )}
+
             </div>
         );
     } else {
