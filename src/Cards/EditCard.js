@@ -1,33 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { readDeck, createCard } from '../utils/api';
+import { readDeck, readCard, updateCard } from '../utils/api';
 
-function NewCards() {
-  const { deckId } = useParams();
+function EditCard() {
+  const { deckId, cardId } = useParams(); 
   const navigate = useNavigate();
   const [deck, setDeck] = useState(null);
   const [front, setFront] = useState('');
   const [back, setBack] = useState('');
 
   useEffect(() => {
-    async function loadDeck() {
-      const deckData = await readDeck(deckId);
-      setDeck(deckData);
+    async function loadDeckAndCard() {
+      try {
+        const deckData = await readDeck(deckId);
+        setDeck(deckData);
+        const cardData = await readCard(deckId, cardId); 
+        setFront(cardData.front);
+        setBack(cardData.back);
+      } catch (error) {
+        console.error("Failed to load deck or card:", error);
+
+      }
     }
 
-    loadDeck();
-  }, [deckId]);
+    loadDeckAndCard();
+  }, [deckId, cardId]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const newCard = {
+    const updatedCard = {
+      id: cardId, 
+      deckId,
       front,
       back,
     };
-    await createCard(deckId, newCard);
-    // Optionally, reset the form or navigate away
-    setFront('');
-    setBack('');
+
+    await updateCard(updatedCard);
+    navigate(`/decks/${deckId}`);
   };
 
   if (!deck) {
@@ -36,12 +45,11 @@ function NewCards() {
 
   return (
     <div>
-      <h2>Add Card to {deck.name}</h2>
+      <h2>Edit Card for {deck.name}</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="front">Front</label>
-          <textarea            
-            type="text"
+          <textarea
             id="front"
             name="front"
             className="form-control"
@@ -53,7 +61,6 @@ function NewCards() {
         <div className="form-group">
           <label htmlFor="back">Back</label>
           <textarea
-            type="text"
             id="back"
             name="back"
             className="form-control"
@@ -62,13 +69,12 @@ function NewCards() {
             required
           />
         </div>
-        <button type="button" className="btn btn-secondary" onClick={() => navigate(`/decks/${deckId}`)}>Done</button>
-        <button type="submit" className="btn btn-primary">Save</button>
+        <button type="button" className="btn btn-secondary" onClick={() => navigate(`/decks/${deckId}`)}>Cancel</button>
+        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     </div>
   );
 }
 
-export default NewCards;
-
+export default EditCard;
 

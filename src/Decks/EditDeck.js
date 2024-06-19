@@ -1,30 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { listDecks, createDeck } from '../utils/api'; 
+import { useNavigate, useParams } from 'react-router-dom';
+import { readDeck, updateDeck } from '../utils/api'; 
 
-function CreateDeck() {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [deckId, setDeckId] = useState(0); 
-  const navigate = useNavigate();
+function EditDeck() {
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const { deckId } = useParams();
+    const navigate = useNavigate();
+    const [deck, setDeck] = useState(null);
 
-  useEffect(() => {
-    const getDecks = async () => {
-      const decks = await listDecks();
-      const highestId = decks.reduce((maxId, deck) => Math.max(maxId, deck.id), 0);
-      setDeckId(highestId + 1);
-    };
-    getDecks();
-  }, []);
+    useEffect(() => {
+        async function loadDeck() {
+            const deckData = await readDeck(deckId);
+            setDeck(deckData);
+        }
+
+        loadDeck();
+    }, [deckId]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const newDeck = {
+    const updatedDeck = {
       id: deckId, 
       name,
       description,
     };
-    await createDeck(newDeck);
+    await updateDeck(updatedDeck);
     setName('');
     setDescription('');
     navigate(`/decks/${deckId}`); 
@@ -32,7 +33,7 @@ function CreateDeck() {
 
   return (
     <div>
-      <h2>Create Deck</h2>
+      <h2>Edit Deck</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
@@ -56,12 +57,11 @@ function CreateDeck() {
             required
           />
         </div>
-        <button type="button" className="btn btn-secondary" onClick={() => navigate('/')}>Cancel</button>
+        <button type="button" className="btn btn-secondary" onClick={() => navigate(`/decks/${deckId}`)}>Cancel</button>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     </div>
   );
 }
 
-export default CreateDeck;
-
+export default EditDeck;
