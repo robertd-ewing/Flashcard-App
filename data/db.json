@@ -12,8 +12,8 @@
     },
     {
       "id": 3,
-      "name": "Test Deck",
-      "description": "This is a deck just for testing purposes"
+      "name": "testing",
+      "description": "testing"
     }
   ],
   "cards": [
@@ -71,6 +71,24 @@
       "deckId": "3",
       "front": "ADF",
       "back": "AFAFD"
+    },
+    {
+      "id": 11,
+      "deckId": "3",
+      "front": "testing!!",
+      "back": "testing!!"
+    },
+    {
+      "id": 12,
+      "deckId": "3",
+      "front": "testing!!",
+      "back": "testing!!"
+    },
+    {
+      "front": "testing",
+      "back": "testing",
+      "deckId": 3,
+      "id": 13
     }
   ]
 }

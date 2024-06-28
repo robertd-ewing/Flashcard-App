@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { readDeck, deleteDeck } from "../utils/api";
 
 function View() {
-    const { deckId, cardId } = useParams();
+    const { deckId } = useParams();
     const navigate = useNavigate();
     const [deck, setDeck] = useState(null);
 
