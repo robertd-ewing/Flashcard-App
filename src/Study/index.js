@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { readDeck } from "../utils/api";
 import StudyCards from "./StudyCards";
 import NotEnoughCards from "../Cards/NotEnoughCards";
+import BreadCrumb from "../BreadCrumb";
 
 
 function Study() {
@@ -27,6 +28,7 @@ function Study() {
 
   return (
     <>
+      <BreadCrumb /> 
       <h2>Study:</h2>  <span>{deck.name}</span>
       {deck.cards.length < 3 ? (
         <NotEnoughCards deck={deck} />
