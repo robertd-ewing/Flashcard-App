@@ -27,7 +27,7 @@ function Study() {
   }
 
   return (
-    <>
+     <div>
       <BreadCrumb /> 
       <h2><span>{deck.name}</span>:Study</h2>  
       {deck.cards.length < 3 ? (
@@ -35,7 +35,7 @@ function Study() {
       ) : (
         <StudyCards cards={deck.cards} />
       )}
-    </>
+    </div>
   );
 }
 

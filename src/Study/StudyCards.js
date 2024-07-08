@@ -22,10 +22,10 @@ function StudyCards({ cards }) {
   return (
     <section className="card">
       {cards && (
-        <>
+        <div>
           <h3>Card {cardNumber} of {cards.length}</h3>
           <p>{flipped ? cards[cardNumber - 1].back : cards[cardNumber - 1].front}</p>
-        </>
+        </div>
       )}
       <button className="btn bg-secondary" onClick={flipCard}>Flip</button>
       {flipped && <button className="btn bg-primary" onClick={next}>Next</button>}

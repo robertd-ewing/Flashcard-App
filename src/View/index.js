@@ -25,7 +25,7 @@ function View() {
 
     if (deck) {
         return (
-            <>
+            <div>
                 <div>
                     <h2>{deck.name}</h2>
                     <h4>{deck.description}</h4>
@@ -49,7 +49,7 @@ function View() {
                    
             
                 </div>
-            </>
+            </div>
             
         );
     } else {

@@ -24,12 +24,12 @@ function EditDeck({ editDeck }) {
   let routeTo = `/decks/${deckId}`;
 
   return (
-    <>
+    <div>
       <BreadCrumb />
       <h1>Edit Deck</h1>
 
       <DeckForm deck={deck} submitDeck={handleSubmit} routeTo={routeTo} />
-    </>
+    </div>
   );
 }
 

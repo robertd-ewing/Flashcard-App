@@ -32,11 +32,11 @@ function EditCard() {
   }
 
   return (
-    <>
+    <div>
       <BreadCrumb />
       <h2>{deck.name}: Edit Card</h2>
       <CardForm card={card} submitCard={handleSubmit} routeTo={`/decks/${card.deckId}`} />
-    </>
+    </div>
   );
 }
 

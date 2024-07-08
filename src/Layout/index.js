@@ -13,7 +13,7 @@ import EditDeck from '../decks/EditDeck';
 
 function Layout() {
   return (
-    <>
+    <div>
       <Header />
       <div className="container">
         <Routes>
@@ -27,7 +27,7 @@ function Layout() {
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>
-    </>
+    </div>
   );
 }
 

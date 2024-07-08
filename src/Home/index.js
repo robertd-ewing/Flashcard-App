@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { listDecks } from "../utils/api";
 import Decks from "../decks";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [decks, setDecks] = useState([]);
@@ -13,18 +13,22 @@ function Home() {
       setDecks(response);
     }
 
-    loadDecks(); 
+    loadDecks();
   }, []);
 
   return (
     <div>
-      <button type="button" className="btn btn-secondary" onClick={() => navigate('/decks/new')}>Create Deck</button>
+      <button
+        type="button"
+        className="btn btn-secondary"
+        onClick={() => navigate("/decks/new")}
+      >
+        Create Deck
+      </button>
       <h2>Decks</h2>
       <Decks decks={decks} />
-      
     </div>
   );
 }
 
 export default Home;
-

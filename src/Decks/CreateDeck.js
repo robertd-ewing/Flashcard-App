@@ -20,12 +20,12 @@ function CreateDeck({ addDeck }) {
   let routeTo = "/";
 
   return (
-    <>
+    <div>
       <BreadCrumb />
       <h2>Create Deck</h2>
 
       <DeckForm deck={formData} submitDeck={handleSubmit} routeTo={routeTo} />
-    </>
+    </div>
 
   );
 }
