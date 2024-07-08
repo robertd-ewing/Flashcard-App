@@ -20,24 +20,26 @@ function BreadCrumb() {
     }, [deckId]);
 
     useEffect(() => {
-        if (deck) {
-            const pathnames = location.pathname.split('/').filter((x) => x && x !== 'decks');
-            const crumbList = pathnames.map((value, index) => {
-                const to = `/${pathnames.slice(0, index + 1).join('/')}`;
-                const isLast = index === pathnames.length - 1;
-                return (
-                    <li key={to} className={`breadcrumb-item ${isLast ? 'active' : ''}`} aria-current={isLast ? 'page' : undefined}>
-                        {isLast ? (
-                            value === deckId ? deck.name : value
-                        ) : (
-                            <Link to={to}>{value === deckId ? deck.name : value}</Link>
-                        )}
-                    </li>
-                );
-            });
-            setBreadcrumbs(crumbList);
-        }
+        const pathnames = location.pathname.split('/').filter((x) => x && x !== 'decks');
+        const crumbList = pathnames.map((value, index) => {
+            const to = `/${pathnames.slice(0, index + 1).join('/')}`;
+            const isLast = index === pathnames.length - 1;
+            return (
+                <li key={to} className={`breadcrumb-item ${isLast ? 'active' : ''}`} aria-current={isLast ? 'page' : undefined}>
+                    {isLast ? (
+                        value === deckId ? (deck ? capitalize(deck.name) : 'Loading...') : capitalize(value)
+                    ) : (
+                        <Link to={value === deckId ? `/decks/${deckId}` : to}>{value === deckId ? (deck ? capitalize(deck.name) : 'Loading...') : capitalize(value)}</Link>
+                    )}
+                </li>
+            );
+        });
+        setBreadcrumbs(crumbList);
     }, [deck, location.pathname, deckId]);
+
+    const capitalize = (s) => {
+        return s.charAt(0).toUpperCase() + s.slice(1);
+    };
 
     return (
         <nav aria-label="breadcrumb">
@@ -52,5 +54,7 @@ function BreadCrumb() {
 }
 
 export default BreadCrumb;
+
+
 
 

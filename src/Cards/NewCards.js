@@ -29,7 +29,7 @@ function NewCards() {
 
   return (
     <>
-      <h2>{deck.name}: Add Card</h2>
+      <h2><span>{deck.name}</span>:Add Card</h2> 
 
       <CardForm formData={formData} submitCard={handleSubmit} routeTo={`/decks/${deckId}`} />
     </>
