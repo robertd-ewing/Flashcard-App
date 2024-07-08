@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { readDeck, updateDeck } from "../utils/api";
 import DeckForm from "./DeckForm";
+import BreadCrumb from "../BreadCrumb";
 
 function EditDeck({ editDeck }) {
   const { deckId } = useParams();
@@ -24,6 +25,7 @@ function EditDeck({ editDeck }) {
 
   return (
     <>
+      <BreadCrumb />
       <h1>Edit Deck</h1>
 
       <DeckForm deck={deck} submitDeck={handleSubmit} routeTo={routeTo} />

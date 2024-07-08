@@ -29,7 +29,7 @@ function Study() {
   return (
     <>
       <BreadCrumb /> 
-      <h2>Study:</h2>  <span>{deck.name}</span>
+      <h2><span>{deck.name}</span>:Study</h2>  
       {deck.cards.length < 3 ? (
         <NotEnoughCards deck={deck} />
       ) : (
