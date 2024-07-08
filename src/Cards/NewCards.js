@@ -7,7 +7,7 @@ import CardForm from "./CardForm";
 
 function NewCards() {
   let { deckId } = useParams();
-  const [deck, setDeck] = useState("");
+  const [deck, setDeck] = useState(null);
   const initialFormState = { front: "", back: "" };
   const [formData, setFormData] = useState(initialFormState);
 
@@ -29,7 +29,7 @@ function NewCards() {
 
   return (
     <>
-      <h2><span>{deck.name}</span>:Add Card</h2> 
+      <h2><span>{deck?.name}</span>:<span>Add Card</span></h2>
 
       <CardForm formData={formData} submitCard={handleSubmit} routeTo={`/decks/${deckId}`} />
     </>

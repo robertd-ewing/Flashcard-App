@@ -36,11 +36,10 @@ function View() {
                         <Link to={`/decks/${deckId}/cards/new`} className="btn btn-primary">Add Cards</Link>
                         <button type="button" className="btn btn-danger" onClick={handleDelete}>Delete</button>
                     </div>
-                    {console.log(deck)}
                     <h3>Cards</h3>
                    
                     {deck.cards.map((card) => (
-                         <section className='card'>
+                         <section key={card.id} className='card'>
                             <span>{card.front}</span>
                             <span>{card.back}</span>
                             <Link to={`/decks/${deckId}/cards/${card.id}/edit`} className="btn btn-secondary">Edit</Link>
