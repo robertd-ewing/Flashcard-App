@@ -1,15 +1,14 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import NotFound from "./NotFound";
 import Home from "../Home";
 import Study from "../Study";
 import View from "../View";
 import NewCards from "../Cards/NewCards";
-import CreateDeck from "../decks/CreateDeck";
-import EditCard from '../Cards/EditCard';
-import EditDeck from '../decks/EditDeck';
-
+import CreateDeck from "../Decks/CreateDeck";
+import EditCard from "../Cards/EditCard";
+import EditDeck from "../Decks/EditDeck";
 
 function Layout() {
   return (
@@ -23,7 +22,10 @@ function Layout() {
           <Route path="decks/new" element={<CreateDeck />} />
           <Route path="decks/:deckId/edit" element={<EditDeck />} />
           <Route path="decks/:deckId/cards/new" element={<NewCards />} />
-          <Route path="/decks/:deckId/cards/:cardId/edit" element={<EditCard />} />
+          <Route
+            path="/decks/:deckId/cards/:cardId/edit"
+            element={<EditCard />}
+          />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>

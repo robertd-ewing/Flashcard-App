@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { listDecks } from "../utils/api";
-import Decks from "../decks";
+import Decks from "../Decks";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
