@@ -28,10 +28,10 @@ function View() {
   if (deck) {
     return (
       <div>
-        <div class="deck container">
+        <div className="deck container">
           <h4>{deck.name}</h4>
           <h5>{deck.description}</h5>
-          <div class="button-container">
+          <div className="button-container">
             <Link to={`/decks/${deckId}/edit`} className="btn btn-secondary">
               Edit
             </Link>
@@ -52,22 +52,30 @@ function View() {
           <h3>Cards</h3>
 
           {deck.cards.map((card) => (
-            <section key={card.id} className="card">
-              <span>{card.front}</span>
-              <span>{card.back}</span>
-              <Link
-                to={`/decks/${deckId}/cards/${card.id}/edit`}
-                className="btn btn-secondary"
-              >
-                Edit
-              </Link>
-              <button
-                type="button"
-                className="btn btn-danger"
-                onClick={handleDelete}
-              >
-                Delete <i className="bi bi-trash3"></i>
-              </button>
+            <section key={card.id}>
+              <div className="card">
+                <div className="card-content">
+                  <span className="card-front">{card.front}</span>
+                  <span className="card-back">
+                    {card.back}{" "}
+                    <div className="card-buttons">
+                      <Link
+                        to={`/decks/${deckId}/cards/${card.id}/edit`}
+                        className="btn btn-secondary"
+                      >
+                        Edit
+                      </Link>
+                      <button
+                        type="button"
+                        className="btn btn-danger"
+                        onClick={handleDelete}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </span>
+                </div>
+              </div>
             </section>
           ))}
         </div>
