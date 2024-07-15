@@ -5,12 +5,9 @@ import StudyCards from "./StudyCards";
 import NotEnoughCards from "../Cards/NotEnoughCards";
 import BreadCrumb from "../BreadCrumb";
 
-
 function Study() {
-
   const { deckId } = useParams();
-  const [deck, setDeck] = useState(null);
-
+  const [deck, setDeck] = useState();
 
   useEffect(() => {
     async function loadDeck() {
@@ -20,16 +17,16 @@ function Study() {
     loadDeck();
   }, [deckId]);
 
-
-  
   if (!deck) {
     return <div>Loading...</div>;
   }
 
   return (
-     <div>
-      <BreadCrumb /> 
-      <h2><span>{deck.name}</span>:Study</h2>  
+    <div>
+      <BreadCrumb />
+      <h2>
+        <span>{deck.name}</span>:Study
+      </h2>
       {deck.cards.length < 3 ? (
         <NotEnoughCards deck={deck} />
       ) : (
@@ -40,8 +37,3 @@ function Study() {
 }
 
 export default Study;
-
-
-
-
-
